@@ -14,7 +14,7 @@
         <a-collapse v-model:active-key="activeKeys" style="margin-top: 16px">
           <a-collapse-panel
             key="result"
-            header="查看执行结果"
+            header="View execution results"
             class="result-collapse-panel"
           >
             <sql-result
@@ -26,17 +26,17 @@
               style="margin-top: 16px"
             />
           </a-collapse-panel>
-          <a-collapse-panel v-if="level.hint" key="hint" header="查看提示">
+          <a-collapse-panel v-if="level.hint" key="hint" header="View Hints">
             <p>{{ level.hint }}</p>
           </a-collapse-panel>
-          <a-collapse-panel key="ddl" header="查看建表语句">
+          <a-collapse-panel key="ddl" header="View Create Table Statement">
             <code-editor
               :init-value="level.initSQL"
               :editor-style="{ minHeight: '400px' }"
               read-only
             />
           </a-collapse-panel>
-          <a-collapse-panel key="answer" header="查看答案">
+          <a-collapse-panel key="answer" header="View Answer">
             <pre v-html="highlightCode(format(level.answer))"></pre>
           </a-collapse-panel>
         </a-collapse>

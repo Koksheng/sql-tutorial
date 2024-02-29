@@ -3,10 +3,10 @@
     <div ref="editorRef" :style="editorStyle" />
     <a-space :size="16" style="margin-top: 16px">
       <a-button type="primary" style="width: 180px" @click="doSubmit">
-        运行
+        Run
       </a-button>
-      <a-button @click="doFormat">格式化</a-button>
-      <a-button @click="doReset">重置</a-button>
+      <a-button @click="doFormat">Format</a-button>
+      <a-button @click="doReset">Reset</a-button>
     </a-space>
   </div>
 </template>
@@ -59,7 +59,7 @@ watchEffect(async () => {
   // 初始化 / 更新默认 SQL
   if (inputEditor.value) {
     toRaw(inputEditor.value).setValue(
-      "-- 请在此处输入 SQL\n" + level.value.defaultSQL
+      "-- Please enter SQL here\n" + level.value.defaultSQL
     );
   }
   // 初始化 / 更新 DB
@@ -105,7 +105,7 @@ const doSubmit = () => {
     // 向外层传递结果
     onSubmit?.value(inputStr, result, answerResult);
   } catch (error: any) {
-    message.error("语句错误，" + error.message);
+    message.error("Statement Error，" + error.message);
     // 向外层传递结果
     onSubmit?.value(inputStr, [], [], error.message);
   }

@@ -5,7 +5,7 @@
       <a-divider />
       <div>
         <a-button v-if="levelNum > 0" style="float: left" @click="toPrevLevel">
-          上一关
+          Prev
         </a-button>
         <a-button
           v-if="levelNum < mainLevels.length - 1"
@@ -14,7 +14,7 @@
           :disabled="resultStatus !== RESULT_STATUS_ENUM.SUCCEED"
           @click="toNextLevel"
         >
-          下一关
+          Next
         </a-button>
         <a-button
           v-if="levelNum === mainLevels.length - 1"
@@ -23,11 +23,11 @@
           :disabled="resultStatus !== RESULT_STATUS_ENUM.SUCCEED"
           @click="doWin"
         >
-          恭喜通关
+        Congrats, you're finished!
         </a-button>
       </div>
     </a-card>
-    <a-card v-else>关卡加载失败</a-card>
+    <a-card v-else>Problem loading failed</a-card>
   </div>
 </template>
 
@@ -68,8 +68,7 @@ watch([levelNum], () => {
  * 通关
  */
 const doWin = () => {
-  alert("恭喜通关，有收获的话，欢迎给本项目一个 star 哦~");
-  window.open("https://github.com/liyupi/sql-mother");
+  alert("Congratulations on clearing!");
 };
 
 /**

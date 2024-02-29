@@ -13,9 +13,9 @@ export const RESULT_STATUS_ENUM = {
  * 结果状态信息映射
  */
 export const RESULT_STATUS_INFO_MAP = {
-  "-1": "未执行",
-  0: "❌ 错误",
-  1: "✅ 正确",
+  "-1": "Not executed",
+  0: "❌ Wrong",
+  1: "✅ Correct",
 };
 
 /**

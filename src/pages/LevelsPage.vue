@@ -2,14 +2,14 @@
   <div id="levelsPage">
     <a-row :gutter="[16, 16]">
       <a-col :md="12" :xs="24">
-        <a-card title="主线关卡">
+        <a-card title="Main Level">
           <a-list item-layout="horizontal" :data-source="mainLevels">
             <template #renderItem="{ item: level, index }">
               <a-list-item>
                 <a-list-item-meta :title="`${index + 1}、${level.title}`" />
                 <template #actions>
                   <router-link :to="`/learn/${level.key}`">
-                    <a-button>挑战</a-button>
+                    <a-button>Start</a-button>
                   </router-link>
                 </template>
               </a-list-item>
@@ -18,14 +18,14 @@
         </a-card>
       </a-col>
       <a-col :md="12" :xs="24">
-        <a-card title="自定义关卡">
+        <a-card title="Custom Level">
           <a-list item-layout="horizontal" :data-source="customLevels">
             <template #renderItem="{ item: level }">
               <a-list-item>
                 <a-list-item-meta :title="level.title" />
                 <template #actions>
                   <router-link :to="`/learn/${level.key}`">
-                    <a-button>挑战</a-button>
+                    <a-button>Start</a-button>
                   </router-link>
                 </template>
               </a-list-item>

@@ -1,13 +1,13 @@
 <template>
   <a-card
     id="sqlResult"
-    title="执行结果"
+    title="Execution Result"
     :extra="RESULT_STATUS_INFO_MAP[resultStatus]"
     :bordered="false"
     style="max-height: 420px; overflow-y: auto"
   >
     <sql-result-table v-if="!errorMsg" :result="result" />
-    <div v-else>❌ 语句错误：{{ errorMsg }}</div>
+    <div v-else>❌ Statement Error: {{ errorMsg }}</div>
   </a-card>
 </template>
 

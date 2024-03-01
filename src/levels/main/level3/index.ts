@@ -3,11 +3,11 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level3",
-  title: "基础语法 - 查询 - 别名",
+  title: "Basic Syntax - Query - Alias",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
-  answer: "select name as 学生姓名, age 学生年龄 from student",
-  hint: "请仔细查看本关给出的示例",
+  answer: "select name as StudentName, age as StudentAge from student",
+  hint: "Please carefully review the examples provided in this level.",
   type: "main",
 } as LevelType;

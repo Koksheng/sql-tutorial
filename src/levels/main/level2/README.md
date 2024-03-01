@@ -17,7 +17,7 @@ Let's understand the select query with an analogy: Imagine you are a class manag
 Suppose there is a student data table named `students`, which stores information about students in the class, including name, age, gender, and score.
 
 
-Data table `students`:
+Table `students`:
 
 |   name   | age | gender | score |
 |----------|-----|--------|-------|
@@ -36,7 +36,7 @@ select name, gender from students;
 
 
 
-查询结果：
+Query result: 
 
 |   name   | gender |
 |----------|--------|

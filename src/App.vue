@@ -4,7 +4,7 @@
       <a-col flex="160px" style="margin: 0 auto">
         <RouterLink to="/">
           <a-row align="middle">
-            <img src="./assets/logo.png" alt="SQL之母" class="logo" />
+            <img src="./assets/logo.png" alt="鱼皮SQL" class="logo" />
             <span class="title">鱼皮SQL</span>
           </a-row>
         </RouterLink>

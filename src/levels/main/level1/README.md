@@ -1,47 +1,48 @@
-# 基础语法 - 查询 - 全表查询
+# Basic Syntax - Querying - Full Table Query
 
-## 教程
+## Tutorial
 
-在 SQL 学习的起点，我们需要了解一些基本概念，包括数据库、数据表、SQL、select 查询以及全表查询。
+At the beginning of learning SQL, we need to understand some basic concepts, including databases, tables, SQL, select queries, and full table queries.
 
-数据库是存放专门存放和管理数据的库。数据库就好比是一座大型的图书馆，而这个图书馆可以存储大量的信息。我们可以在图书馆中建立各种各样的书架，每个书架代表一个数据表。
+A database is a repository specifically designed to store and manage data. A database is like a large library that can store a vast amount of information. Within the library, we can set up various bookshelves, each representing a data table.
 
-书架上会有很多本书，数据表中的每一行就相当于一本书，每一列就相当于这本书的属性，比如书的名称、书的出版日期等等。
+On each bookshelf, there are many books. Each row in a data table is like a book, and each column represents the attributes of that book, such as the book's title, publication date, and so on.
 
-SQL（Structured Query Language）是一种用于管理、操作和查询数据库的标准化语言，被广泛应用于各种类型的数据库，如 MySQL、PostgreSQL、Oracle、Microsoft SQL Server 等，本系列教程中，我们将以通用的 SQL 语法带大家入门 SQL 查询的学习。
+SQL (Structured Query Language) is a standardized language used to manage, manipulate, and query databases. It is widely used in various types of databases, such as MySQL, PostgreSQL, Oracle, Microsoft SQL Server, etc. In this tutorial series, we will introduce SQL query learning using generic SQL syntax.
 
-SQL 的语法是简单易学的，它使用类似自然语言的结构，方便开发人员和数据库管理员进行数据库操作和管理。无论是网站应用、企业软件还是大型数据系统，SQL 都是数据库操作的基础和核心。
+SQL syntax is simple and easy to learn. It uses a structure similar to natural language, making it convenient for developers and database administrators to operate and manage databases. Whether it's a website application, enterprise software, or large-scale data system, SQL is the foundation and core of database operations.
 
-如何使用 SQL 从数据库中查询数据呢？
+How do we use SQL to query data from a database?
 
-首先要了解 select 查询，就好比是我们要从图书馆中找到我们感兴趣的书籍。我们可以使用 select 查询从数据表中检索所需的信息，就像是通过图书馆目录找到了我们想读的书。
+First, we need to understand select queries, which is like searching for books we are interested in from the library. We can use select queries to retrieve the desired information from data tables, just like finding the books we want to read through the library catalog.
 
-select 查询语句有非常多的语法，本节我们学习的是最简单直接的 **全表查询** 。
+There are many syntaxes for select queries. In this section, we will learn the simplest and most direct **Full Table Query**.
 
-当我们使用 `select * from 表名` 这样的 SQL 语句时，就是在进行全表查询，它会返回数据表中的所有行，让我们可以全面了解表中的数据。
-
-
-
-## 示例
-
-让我们假设有一张名为 `student` 的数据表，它存储了学生的信息，包括学号、姓名、年龄等。
-
-现在，我们来使用 select 全表查询语句，查看整个学生表的内容。
-
-数据表 `student`：
+When we use the SQL statement `select * from table_name`, it is performing a full table query. It returns all rows from the data table, allowing us to comprehensively understand the data in the table.
 
 
-| 学号 | 姓名 | 年龄 |
+
+
+## Example
+
+Let's assume there is a table named `student`, which stores student information, including student ID, name, and age.
+
+Now, let's use the select full table query statement to view the contents of the entire student table.
+
+Table `student`: 
+
+
+| Student ID | Name | Age |
 | ---- | ---- | ---- |
-| 101  | 小明 | 20   |
-| 102  | 小红 | 22   |
-| 103  | 小刚 | 21   |
-| 104  | 小丽 | 19   |
+| 101  | John Smith | 20   |
+| 102  | Emily Johnson | 22   |
+| 103  | Michael Brown | 21   |
+| 104  | Emma Davis | 19   |
 
 
 
 
-SQL 查询语句：
+SQL query statement:
 
 ```sql
 select * from student;
@@ -49,24 +50,24 @@ select * from student;
 
 
 
-查询结果：
+Query result:
 
-| 学号 | 姓名 | 年龄 |
+| Student ID | Name | Age |
 | ---- | ---- | ---- |
-| 101  | 小明 | 20   |
-| 102  | 小红 | 22   |
-| 103  | 小刚 | 21   |
-| 104  | 小丽 | 19   |
+| 101  | John Smith | 20   |
+| 102  | Emily Johnson | 22   |
+| 103  | Michael Brown | 21   |
+| 104  | Emma Davis | 19   |
 
 
 
-通过上述 SQL 查询语句，我们就获取到了学生表中的所有学生信息，是不是很简单呢？
 
-试着完成下面的小练习吧~
+With the above SQL query statement, we have obtained all student information from the student table. Isn't it simple?
+
+Now, try to complete the exercises below~
 
 
 
-## 题目
+## Exercise
 
-请编写 SQL 查询语句，从名为 `student` 的数据表中查询出所有学生的信息。
-
+Please write an SQL query statement to retrieve all student information from the table named `student` .

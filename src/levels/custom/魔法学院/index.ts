@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "magicScores",
-  title: "魔法学院",
+  title: "Magic School",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from magic_scores",
@@ -17,6 +17,6 @@ export default {
     "    RANK() OVER (PARTITION BY subject_id ORDER BY score DESC) AS score_rank\n" +
     "FROM \n" +
     "    magic_scores;",
-  hint: "开窗函数",
+  hint: "Window Functions",
   type: "custom",
 } as LevelType;

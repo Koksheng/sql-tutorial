@@ -1,19 +1,23 @@
-# 基础语法 - 查询 - 选择查询
+# Basic Syntax - Query - Select Query
 
-## 教程
+## Tutorial
 
-选择查询是 SQL 中最基本的查询类型，它用于从数据表中选择 **特定的列或字段** ，并只返回这些列的数据值。
-
-选择查询的 SQL 语法是 `SELECT {列名...}`，它告诉数据库我们想要查看哪些列的数据。
-
-让我们用一个形象的比喻来理解选择查询：假设你是一名班级管理者，而你的班级有一张学生名单表，上面列有每个学生的姓名（name）、年龄（age）、性别（gender）、分数（score）等信息。现在，你想了解你班级里的学生的姓名和年龄，因为这些信息能帮助你更好地了解每个学生的基本情况。所以，你只需从学生名单表中挑选出姓名（name）和年龄（age）这两列信息。
+The select query is the most basic type of query in SQL. It is used to select **specific columns or fields** from a data table and returns only the data values of these columns.
 
 
+The SQL syntax for a select query is `SELECT {column_name...}`, which tells the database which columns' data we want to view.
 
-## 示例
-假设有一张名为 `students` 的学生数据表，它存储了班级里学生的信息，包括姓名（name）、年龄（age）、性别（gender）、分数（score）等。
 
-数据表 `students`：
+Let's understand the select query with an analogy: Imagine you are a class manager, and your class has a student roster table containing information such as name, age, gender, and score for each student. Now, you want to know the names and ages of the students in your class because this information helps you better understand each student's basic profile. So, you simply need to pick out the name and age columns from the student roster table.
+
+
+
+
+## Example
+Suppose there is a student data table named `students`, which stores information about students in the class, including name, age, gender, and score.
+
+
+Data table `students`:
 
 |   name   | age | gender | score |
 |----------|-----|--------|-------|
@@ -24,7 +28,7 @@
 
 
 
-现在，我们使用"选择查询"来获取所有学生的姓名（name）和性别（gender）信息，SQL 语句如下：
+Now, let's use a "select query" to retrieve the names and genders of all students. The SQL statement is as follows:
 
 ```sql
 select name, gender from students;
@@ -43,12 +47,12 @@ select name, gender from students;
 
 
 
-通过上述 SQL 查询语句，我们得到了学生名单表中所有学生的姓名和性别信息。
+With the above SQL query statement, we obtained the names and genders of all students from the student roster table.
 
 
 
-## 题目
+## Exercise
 
-请编写一条 SQL 查询语句，从名为 `student` 的数据表中选择出所有学生的姓名（name）和年龄（age）信息。
+Please write an SQL query statement to select the names (name) and ages (age) of all students from the data table named `student`.
 
-注意，所有题目的 **数据列输出顺序必须和题目的要求保持一致** ！比如本题必须学生姓名（name）在前，年龄（age）在后。
+Note that the **order of data column output must be consistent with the requirements of the exercise**! For example, in this exercise, the student's name (name) must come first, followed by age (age).

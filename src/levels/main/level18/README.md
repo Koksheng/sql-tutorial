@@ -1,17 +1,14 @@
-# 分组聚合 - 多字段分组
+# Grouping Aggregates - Multiple Field Grouping
 
 
-## 教程
-有时，单字段分组并不能满足我们的需求，比如想统计学校里每个班级每次考试的学生情况，这时就可以使用多字段分组。
+## Tutorial
+Sometimes, single-field grouping may not meet our needs. For example, if we want to count the number of students in each class for each exam in a school, we can use multiple-field grouping.
 
-多字段分组和单字段分组的实现方式几乎一致，使用 `GROUP BY` 语法即可。
+The implementation of multiple-field grouping is almost the same as single-field grouping, using the `GROUP BY` syntax.
 
 
-
-## 示例
-假设有一个订单表 `orders`，包含以下字段：`order_id`（订单号）、`product_id`（商品编号）、`customer_id`（客户编号）、`amount`（订单金额）。
-
-数据如下：
+## Example
+Suppose there is an orders table `orders`, containing the following fields: `order_id` (order ID), `product_id` (product ID), `customer_id` (customer ID), `amount` (order amount). The data is as follows:
 
 | order_id | product_id | customer_id | amount |
 |---------|-------------|--------|---------|
@@ -23,10 +20,10 @@
 
 
 
-要查询使用多字段分组查询表中 **每个客户** 购买的 **每种商品** 的总金额，相当于按照客户编号和商品编号分组：
+To query the total amount of **each product** purchased by **each customer**, we need to group by both customer ID and product ID:
 
 ```sql
--- 查询每个用户购买的每种商品的总金额，按照客户编号和商品编号分组
+-- Query the total amount of each product purchased by each customer, grouped by customer ID and product ID
 SELECT customer_id, product_id, SUM(amount) AS total_amount
 FROM orders
 GROUP BY customer_id, product_id;
@@ -34,7 +31,7 @@ GROUP BY customer_id, product_id;
 
 
 
-查询结果：
+Query result:
 
 | customer_id | product_id | total_amount |
 | ----------- | ---------- | ------------ |
@@ -45,7 +42,6 @@ GROUP BY customer_id, product_id;
 
 
 
-## 题目
+## Question
 
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`class_id`（班级编号）、`exam_num`（考试次数）、`score`（成绩）。请你编写一个 SQL 查询，统计学生表中的班级编号（class_id），考试次数（exam_num）和每个班级每次考试的总学生人数（total_num）。
-
+Suppose there is a student table `student`, containing the following fields: `id` (student ID), `name` (name), `class_id` (class ID), `exam_num` (number of exams taken), `score` (score). Write an SQL query to calculate the class ID (`class_id`), the number of exams (`exam_num`), and the total number of students (`total_num`) for each class in the student table.

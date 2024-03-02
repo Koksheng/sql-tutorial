@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level18",
-  title: "分组聚合 - 多字段分组",
+  title: "Grouping Aggregates - Multiple Field Grouping",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
@@ -16,6 +16,6 @@ export default {
     "  student\n" +
     "GROUP BY\n" +
     "  class_id, exam_num;",
-  hint: "请仔细查看本关给出的示例",
+    hint: "Please carefully review the examples provided in this level.",
   type: "main",
 } as LevelType;

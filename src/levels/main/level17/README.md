@@ -1,16 +1,15 @@
-# 分组聚合 - 单字段分组
+# Grouping Aggregates - Single Field Grouping
 
-## 教程
-在 SQL 中，分组聚合是一种对数据进行分类并对每个分类进行聚合计算的操作。它允许我们按照指定的列或字段对数据进行分组，然后对每个分组应用聚合函数，如 COUNT、SUM、AVG 等，以获得分组后的汇总结果。
+## Tutorial
+In SQL, grouping aggregates is an operation to classify data and perform aggregate calculations on each category. It allows us to group data by specified columns or fields and then apply aggregate functions such as COUNT, SUM, AVG, etc., to obtain summary results for each group.
 
-举个例子：某个学校可以按照班级将学生分组，并对每个班级进行统计。查看每个班级有多少学生、每个班级的平均成绩。这样我们就能够对学校各班的学生情况有一个整体的了解，而不是单纯看个别学生的信息。
+For example, a school can group students by class and then perform statistics on each class. We can find out how many students are in each class and the average score of each class. This way, we can have an overall understanding of the student situation in each class, rather than just looking at individual student information.
 
-在 SQL 中，通常使用 `GROUP BY` 关键字对数据进行分组。
+In SQL, the `GROUP BY` keyword is typically used to group data.
 
 
-
-## 示例
-假设有一个订单表 `orders`，包含以下字段：`order_id`（订单号）、`customer_id`（客户编号）、`amount`（订单金额）。数据如下：
+## Example
+Suppose there is an orders table `orders`, containing the following fields: `order_id` (order ID), `customer_id` (customer ID), `amount` (order amount). The data is as follows:
 
 | order_id | customer_id | amount |
 |---------|-------------|--------|
@@ -21,7 +20,7 @@
 
 
 
-1）使用分组聚合查询中每个客户的编号：
+1）Using grouping aggregates to query the customer ID for each order:
 
 ```sql
 SELECT customer_id
@@ -29,7 +28,7 @@ FROM orders
 GROUP BY customer_id;
 ```
 
-查询结果：
+Query result:
 
 | customer_id |
 | ----------- |
@@ -39,7 +38,7 @@ GROUP BY customer_id;
 
 
 
-2）使用分组聚合查询每个客户的下单数：
+2）Using grouping aggregates to query the number of orders for each customer:
 
 ```sql
 SELECT customer_id, COUNT(order_id) AS order_num
@@ -47,7 +46,7 @@ FROM orders
 GROUP BY customer_id;
 ```
 
-查询结果：
+Query result:
 
 | customer_id | order_num |
 | ----------- | --------- |
@@ -57,6 +56,6 @@ GROUP BY customer_id;
 
 
 
-## 题目
+## Question
 
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`class_id`（班级编号）、`score`（成绩）。请你编写一个 SQL 查询，统计学生表中的班级编号（class_id）和每个班级的平均成绩（avg_score）。
+Suppose there is a student table `student`, containing the following fields: `id` (student ID), `name` (name), `class_id` (class ID), `score` (score). Write an SQL query to calculate the class ID (`class_id`) and the average score (`avg_score`) for each class in the student table.

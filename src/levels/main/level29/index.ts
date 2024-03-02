@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level29",
-  title: "查询进阶 - 开窗函数 - row_number",
+  title: "Advanced Query - Window Functions - row_number",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
@@ -17,6 +17,6 @@ export default {
     "    ROW_NUMBER() OVER (PARTITION BY class_id ORDER BY score DESC) AS row_number\n" +
     "FROM\n" +
     "    student;",
-  hint: "请仔细查看本关给出的示例",
+  hint: "Please carefully review the examples provided in this level.",
   type: "main",
 } as LevelType;

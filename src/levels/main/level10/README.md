@@ -1,38 +1,38 @@
-# 基础语法 - 去重
+# Basic Syntax - Query - Distinct
 
-## 教程
-在数据表中，可能存在重复的数据记录，但如果我们想要过滤掉重复的记录，只保留不同的记录，就要使用 SQL 的去重功能。
+## Tutorial
+In a data table, there may be duplicate records. However, if we want to filter out duplicate records and only keep distinct records, we can use the deduplication feature of SQL.
 
-在 SQL 中，我们可以使用 `DISTINCT` 关键字来实现去重操作。
+In SQL, we can use the `DISTINCT` keyword to achieve deduplication.
 
-举个应用场景：假设你是班长，要统计班级中有哪些不同的学生，而不关心他们重复出现的次数，就可以使用去重。
+For example, imagine you are a class monitor and you want to list all the different students in the class without caring about how many times they appear. In this case, you can use deduplication.
 
 
 
-## 示例
-假设有一张名为`students`的数据表，它存储了学生信息，包括学生姓名（name）、班级ID（class_id）、考试编号（exam_num）、成绩（score）等：
+## Example
+Suppose there is a table named `students`, which stores student information including student name (`name`), class ID (`class_id`), exam number (`exam_num`), and score (`score`):
 
-数据表`students`：
+Table `students`：
 
 |   name   | class_id | exam_num | score |
 |----------|----------|----------|-------|
-|   张三   |   1      | 1        | 90    |
-|   李四   |   2      | 2        | 85    |
-|   王五   |   1      | 1        | 92    |
-|   李四   |   2      | 3        | 88    |
+|   John   |   1      | 1        | 90    |
+|   Alice  |   2      | 2        | 85    |
+|   Bob    |   1      | 1        | 92    |
+|   Alice  |   2      | 3        | 88    |
 
 
 
-现在，我们使用`DISTINCT`关键字来找出不同的班级 ID：
+Now, let's use the `DISTINCT` keyword to find out the different class IDs:
 
 ```sql
--- SQL 查询语句
+-- SQL query statement
 select distinct class_id from students;
 ```
 
 
 
-查询结果：
+Query result:
 
 | class_id |
 |----------|
@@ -41,17 +41,16 @@ select distinct class_id from students;
 
 
 
-除了按照单字段去重外，`DISTINCT` 关键字还支持根据多个字段的组合来进行去重操作，确保多个字段的组合是唯一的。
+In addition to deduplication based on a single field, the DISTINCT keyword also supports deduplication based on combinations of multiple fields, ensuring that the combination of multiple fields is unique.
 
-示例语法如下：
+The syntax for this is as follows:
 
 ```sql
-distinct 字段1, 字段2, 字段3, ...
+distinct field1, field2, field3, ...
 ```
 
 
 
-## 题目
+## Exercise
 
-请编写一条 SQL 查询语句，从名为 `student` 的数据表中选择出所有不重复的班级 ID（class_id）和考试编号（exam_num）的组合。
-
+Please write a SQL query statement to select all unique combinations of class ID (`class_id`) and exam number (`exam_num`) from the `student` table.

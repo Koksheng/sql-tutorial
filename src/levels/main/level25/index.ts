@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level25",
-  title: "查询进阶 - 组合查询",
+  title: "Advanced Query - Compound Query",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
@@ -11,6 +11,6 @@ export default {
     "select name, age, score, class_id from student\n" +
     "union all\n" +
     "select name, age, score, class_id from student_new;",
-  hint: "请仔细查看本关给出的示例",
+  hint: "Please carefully review the examples provided in this level.",
   type: "main",
 } as LevelType;

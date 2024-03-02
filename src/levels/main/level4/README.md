@@ -1,18 +1,20 @@
-# 基础语法 - 查询 - 常量和运算
+# Basic Syntax - Query - Constants and Operations
 
-## 教程
+## Tutorial
 
-"常量和运算" 是 SQL 中用于对数据进行计算和处理的重要概念。在 SQL 查询中，常量指的是固定的数值或文本（比如 "1"），而运算则是对这些常量进行数学运算或字符串操作。
-
-通过常量和运算，我们可以在查询语句中对数据进行加减乘除、取平均值、连接文本等操作，从而得到我们想要的查询结果。
+"Constants and Operations" are important concepts in SQL for performing calculations and processing data. In SQL queries, constants refer to fixed numerical or text values (e.g., "1"), while operations involve mathematical calculations or string operations on these constants.
 
 
+Through constants and operations, we can perform addition, subtraction, multiplication, division, average calculation, text concatenation, and other operations in query statements, thereby obtaining the desired query results.
 
-## 示例
 
-让我们来看一个具体的 SQL 代码和结果示例，假设有一张名为 `orders` 的数据表，它存储了订单信息，包括订单编号（order_id）、商品单价（unit_price）、购买数量（quantity）等：
 
-数据表`orders`：
+## Example
+
+Let's look at a specific SQL code and result example. Suppose there is a table named `orders`, which stores order information, including order ID (`order_id`), unit price (`unit_price`), and quantity (`quantity`):
+
+
+Table `orders`：
 
 |  order_id  | unit_price | quantity |
 |------------|------------|----------|
@@ -23,9 +25,10 @@
 
 
 
-现在，我们需要计算每个订单的总金额（total_amount），即商品单价（unit_price）乘以购买数量（quantity）。
+Now, we need to calculate the total amount for each order (`total_amount`), which is the unit price (`unit_price`) multiplied by the quantity (`quantity`).
 
-SQL 查询语句如下：
+
+The SQL query statement is as follows:
 
 ```sql
 select order_id, unit_price, quantity, unit_price * quantity as total_amount from orders;
@@ -33,7 +36,7 @@ select order_id, unit_price, quantity, unit_price * quantity as total_amount fro
 
 
 
-查询结果如下，其中 total_amount 是计算出来的新列：
+The query result is as follows, where `total_amount` is the newly calculated column:
 
 |  order_id  | unit_price | quantity | total_amount |
 |------------|------------|----------|--------------|
@@ -44,22 +47,22 @@ select order_id, unit_price, quantity, unit_price * quantity as total_amount fro
 
 
 
-此外，SQL 可以直接把常量作为列名，比如执行下列 SQL 语句：
+Additionally, SQL can directly use constants as column names. For example, executing the following SQL statement:
 
 ```sql
-select 200, '篮球' as hobby;
+select 200, 'basketball' as hobby;
 ```
 
 
 
-查询结果如下：
+The query result is as follows:
 
 | 200  | hobby |
 | :--- | :---- |
-| 200  | 篮球  |
+| 200  | basketball  |
 
 
 
-## 题目
-请编写一条 SQL 查询语句，从名为`student`的数据表中选择出所有学生的姓名（name）和分数（score），并且额外计算出分数的 2 倍（double_score）。
+## Exercise
+Please write a SQL query statement to select the names (`name`) and scores (`score`) of all students from the `student` table, and additionally calculate the double of the scores (`double_score`).
 

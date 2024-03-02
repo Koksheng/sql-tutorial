@@ -3,11 +3,11 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level11",
-  title: "基础语法 - 排序",
+  title: "Basic Syntax - Query - Sorting",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
   answer: "select name, age, score from student order by score desc, age asc;",
-  hint: "需要使用多字段排序",
+  hint: "Need to use multi-field sorting",
   type: "main",
 } as LevelType;

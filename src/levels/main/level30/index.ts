@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level30",
-  title: "查询进阶 - 开窗函数 - lag / lead",
+  title: "Advanced Query - Window Functions - lag / lead",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
@@ -18,6 +18,6 @@ export default {
     "    LEAD(name) OVER (PARTITION BY class_id ORDER BY score DESC) AS next_name\n" +
     "FROM\n" +
     "    student;",
-  hint: "请仔细查看本关给出的示例",
+  hint: "Please carefully review the examples provided in this level.",
   type: "main",
 } as LevelType;

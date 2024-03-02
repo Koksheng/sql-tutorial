@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level28",
-  title: "查询进阶 - 开窗函数 - rank",
+  title: "Advanced Query - Window Functions - rank",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
@@ -17,6 +17,6 @@ export default {
     "    RANK() OVER (PARTITION BY class_id ORDER BY score DESC) AS ranking\n" +
     "FROM\n" +
     "    student;",
-  hint: "要注意 partition by 和 order by 的字段",
+  hint: "Pay attention to the fields of partition by and order by",
   type: "main",
 } as LevelType;

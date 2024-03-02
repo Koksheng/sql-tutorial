@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level26",
-  title: "查询进阶 - 开窗函数 - sum over",
+  title: "Advanced Query - Window Functions - sum over",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
@@ -17,6 +17,6 @@ export default {
     "    AVG(score) OVER (PARTITION BY class_id) AS class_avg_score\n" +
     "FROM\n" +
     "    student;",
-  hint: "求平均值需要使用哪个聚合函数呢？",
+  hint: "Which aggregate function should be used to find the average?",
   type: "main",
 } as LevelType;

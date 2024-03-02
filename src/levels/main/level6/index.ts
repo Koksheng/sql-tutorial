@@ -3,11 +3,11 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level6",
-  title: "基础语法 - 条件查询 - 运算符",
+  title: "Basic Syntax - Query - Conditional Query - Operators",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
-  answer: "select name, age from student where name != '热dog'",
-  hint: "请仔细查看本关给出的示例",
+  answer: "select name, age from student where name != 'George'",
+  hint: "Please carefully review the examples provided in this level.",
   type: "main",
 } as LevelType;

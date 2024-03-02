@@ -53,6 +53,6 @@ With the above SQL query statement, we obtained the names and genders of all stu
 
 ## Exercise
 
-Please write an SQL query statement to select the names (name) and ages (age) of all students from the data table named `student`.
+Please write an SQL query statement to select the names (`name`) and ages (`age`) of all students from the data table named `student`.
 
-Note that the **order of data column output must be consistent with the requirements of the exercise**! For example, in this exercise, the student's name (name) must come first, followed by age (age).
+Note that the **order of data column output must be consistent with the requirements of the exercise**! For example, in this exercise, the student's name (`name`) must come first, followed by age (`age`).

@@ -1,80 +1,79 @@
-# 函数 - 字符串处理
+# Function - String Functions
 
-## 教程
-在 SQL 中，字符串处理是一类用于处理文本数据的函数。它们允许我们对字符串进行各种操作，如转换大小写、计算字符串长度以及搜索和替换子字符串等。字符串处理函数可以帮助我们在数据库中对字符串进行加工和转换，从而满足不同的需求。
+## Tutorial
+In SQL, string functions are used to manipulate text data. They allow us to perform various operations on strings, such as converting case, calculating string length, searching, and replacing substrings. String functions help us process and transform strings in the database to meet different needs.
 
 
-
-## 示例
-假设有一个员工表 `employees`，包含以下字段：`id`（员工编号）、`name`（员工姓名）。数据如下：
+## Example
+Suppose there is an employee table `employees`, containing the following fields: `id` (employee ID), `name` (employee name). The data is as follows:
 
 | id | name       |
 |----|------------|
-| 1  | 小明       |
-| 2  | 热dog      |
-| 3  | Fish摸摸   |
-| 4  | 鸡哥       |
+| 1  | John       |
+| 2  | Bob        |
+| 3  | Alice      |
+| 4  | Kate       |
 
 
 
-1）使用字符串处理函数 `UPPER` 将姓名转换为大写：
+
+1）Using the string function `UPPER` to convert names to uppercase:
 
 ```sql
--- 将姓名转换为大写
+-- Convert names to uppercase
 SELECT name, UPPER(name) AS upper_name
 FROM employees;
 ```
 
-查询结果：
+Query result:
 
 | name       | upper_name |
 |------------|------------|
-| 小明       | 小明       |
-| 热dog      | 热DOG      |
-| Fish摸摸   | FISH摸摸   |
-| 鸡哥       | 鸡哥       |
+| John       | JOHN       |
+| Bob        | BOB        |
+| Alice      | ALICE      |
+| Kate       | KATE       |
 
 
 
-2）使用字符串处理函数 `LENGTH` 计算姓名长度：
+2）Using the string function `LENGTH` to calculate the length of names:
 
 ```sql
--- 计算姓名长度
+-- Calculate the length of names
 SELECT name, LENGTH(name) AS name_length
 FROM employees;
 ```
 
-查询结果：
+Query result:
 
 | name       | name_length |
 |------------|-------------|
-| 小明       | 2           |
-| 热dog      | 4           |
-| Fish摸摸   | 6           |
-| 鸡哥       | 2           |
+| John       | 4           |
+| Bob        | 3           |
+| Alice      | 5           |
+| Kate       | 4           |
 
 
 
-3）使用字符串处理函数 `LOWER` 将姓名转换为小写：
+3）Using the string function `LOWER` to convert names to lowercase:
 
 ```sql
--- 将姓名转换为小写并进行条件筛选
+-- Convert names to lowercase
 SELECT name, LOWER(name) AS lower_name
 FROM employees;
 ```
 
-查询结果：
+Query result:
 
-| name     | lower_name |
-| -------- | ---------- |
-| 小明     | 小明       |
-| 热dog    | 热dog      |
-| Fish摸摸 | fish摸摸   |
-| 鸡哥     | 鸡哥       |
+| name       | lower_name |
+| --------   | ---------- |
+| John       | john       |
+| Bob        | bob        |
+| Alice      | alice      |
+| Kate       | kate       |
 
 
 
-## 题目
+## Question
 
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）。请你编写一个 SQL 查询，筛选出姓名为 '热dog' 的学生，展示其学号（id）、姓名（name）及其大写姓名（upper_name）。
-
+Suppose there is a student table `student`, containing the following fields: `id` (student ID), `name` (name). Write an SQL query to filter out students with the name 'Harry', and display their ID (`id`), name (`name`), and their uppercase name (`upper_name`).

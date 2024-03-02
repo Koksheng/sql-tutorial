@@ -1,29 +1,28 @@
-# 查询进阶 - 开窗函数 - rank
+# Advanced Query - Window Functions - rank
 
-## 教程
-本节我们来学习一个新的开窗函数 Rank。
+## Tutorial
+In this section, we will learn about a new window function called Rank.
 
-Rank 开窗函数是 SQL 中一种用于对查询结果集中的行进行 **排名** 的开窗函数。它可以根据指定的列或表达式对结果集中的行进行排序，并为每一行分配一个排名。在排名过程中，相同的值将被赋予相同的排名，而不同的值将被赋予不同的排名。
+The Rank window function in SQL is used to **rank** rows in the result set. It assigns a rank to each row based on specified columns or expressions. During ranking, rows with the same value are assigned the same rank, and different values are assigned different ranks.
 
-> 当存在并列（相同排序值）时，Rank 会跳过后续排名，并保留相同的排名。
+> When there are ties (same sorting values), Rank will skip the subsequent ranks and keep the same rank.
 
-Rank 开窗函数的常见用法是在查询结果中查找前几名（Top N）或排名最高的行。
+A common usage of the Rank window function is to find the top N rows or the highest-ranked rows in a query result.
 
-Rank 开窗函数的语法如下：
+The syntax for the Rank window function is as follows:
 
 ```sql
 RANK() OVER (
-  PARTITION BY 列名1, 列名2, ... -- 可选，用于指定分组列
-  ORDER BY 列名3 [ASC|DESC], 列名4 [ASC|DESC], ... -- 用于指定排序列及排序方式
+  PARTITION BY column1, column2, ... -- Optional, specifies the grouping columns
+  ORDER BY column3 [ASC|DESC], column4 [ASC|DESC], ... -- Specifies the sorting columns and order
 ) AS rank_column
 ```
 
-其中，`PARTITION BY` 子句可选，用于指定分组列，将结果集按照指定列进行分组；`ORDER BY` 子句用于指定排序列及排序方式，决定了计算 Rank 时的排序规则。`AS rank_column` 用于指定生成的 Rank 排名列的别名。
+Here, the `PARTITION BY` clause is optional and is used to specify grouping columns to partition the result set. The `ORDER BY` clause is used to specify sorting columns and their order, determining the sorting rules for calculating Rank. `AS rank_column` specifies the alias for the generated Rank column.
 
 
-
-## 示例
-假设我们有订单表 `orders`，表格数据如下：
+## Example
+Suppose we have an orders table `orders` with the following data:
 
 | order_id | customer_id | order_date | total_amount |
 |----------|-------------|------------|--------------|
@@ -34,7 +33,7 @@ RANK() OVER (
 
 
 
-现在，我们希望为每个客户的订单按照订单金额降序排名，并显示每个订单的详细信息。
+Now, let's say we want to rank each customer's orders by total amount in descending order and display the details of each order.
 
 ```sql
 SELECT 
@@ -49,7 +48,7 @@ FROM
 
 
 
-查询结果：
+The query result will be:
 
 | order_id | customer_id | order_date | total_amount | customer_rank |
 | -------- | ----------- | ---------- | ------------ | ------------- |
@@ -60,15 +59,13 @@ FROM
 
 
 
-在上面的示例中，我们使用开窗函数 RANK 来为每个客户的订单按照订单金额降序排名（customer_rank），并使用 PARTITION BY 子句按照 customer_id 进行分组，并使用 ORDER BY 子句按照 total_amount 从大到小进行排序。
+In the above example, we use the Rank window function to rank each customer's orders by total amount in descending order (customer_rank). We partition the result set by customer_id and order by total_amount in descending order.
 
-可以看到，开窗函数保留了原始订单的详细信息，同时计算了每个客户的订单金额排名。
+As seen from the example, the window function retains the details of the original orders while calculating the rank of each customer's orders.
 
 
+## Question
 
-## 题目
+Suppose we have a student table `student` with the following fields: `id` (student ID), `name` (student name), `age` (student age), `score` (score), `class_id` (class ID).
 
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`age`（年龄）、`score`（分数）、`class_id`（班级编号）。
-
-请你编写一个 SQL 查询，返回每个学生的详细信息（字段顺序和原始表的字段顺序一致），并且按照分数降序的方式计算每个班级内的学生的分数排名（ranking）。
-
+Write an SQL query to return the detailed information of each student (in the same order as the original table) and calculate the ranking of students within each class in descending order of scores (ranking).

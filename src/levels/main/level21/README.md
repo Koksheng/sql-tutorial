@@ -1,35 +1,33 @@
-# 查询进阶 - 关联查询 - inner join
+# Advanced Query - Join Query - Inner Join
 
-## 教程
-在 SQL 中，INNER JOIN 是一种常见的关联查询方式，它根据两个表之间的关联条件，将满足条件的行组合在一起。
+## Tutorial
+In SQL, INNER JOIN is a common type of join query that combines rows from two tables based on a related condition between them.
 
-注意，INNER JOIN 只返回两个表中满足关联条件的交集部分，即在两个表中都存在的匹配行。
+It's important to note that INNER JOIN only returns the intersection of rows that satisfy the join condition in both tables.
 
 
-
-## 示例
-假设有一个员工表 `employees`，包含以下字段：`emp_id`（员工编号）、`emp_name`（员工姓名）、`department`（所属部门）、`salary`（工资）。数据如下：
+## Example
+Suppose we have an employee table `employees` with the following fields: `emp_id` (employee ID), `emp_name` (employee name), `department` (department), `salary` (salary). Here's the data:
 
 | emp_id | emp_name | department | salary |
 |--------|----------|------------|--------|
-| 1      | 小明     | 技术部     | 5000   |
-| 2      | 鸡哥     | 财务部     | 6000   |
-| 3      | 李华     | 销售部     | 4500   |
+| 1      | John     | Technology     | 5000   |
+| 2      | David     | Finance     | 6000   |
+| 3      | Vanessa     | Sales     | 4500   |
 
 
 
-假设还有一个部门表 `departments`，包含以下字段：`department`（部门名称）、`manager`（部门经理）、`location`（所在地）。数据如下：
+Now, let's assume we also have a department table `departments` with the following fields: `department` (department name), `manager` (department manager), `location` (location). Here's the data:
 
 | department | manager | location |
-| ---------- | ------- | -------- |
-| 技术部     | 张三    | 上海     |
-| 财务部     | 李四    | 北京     |
-| 销售部     | 王五    | 广州     |
-| 摸鱼部     | 赵二    | 吐鲁番   |
+|------------|---------|----------|
+| Technology     | Daniel    | Serangoon     |
+| Finance      | Alex    | Paya Lebar     |
+| Sales      | Viji    | Bishan     |
+| Reliability      | Edwin    | Yishun     |
 
 
-
-使用 INNER JOIN 进行关联查询，根据员工表和部门表之间的公共字段 `部门名称（department）` 进行匹配，将员工的姓名、工资以及所属部门和部门经理组合在一起：
+Using INNER JOIN, we can perform a join query based on the common field `department` between the `employees` and `departments` tables, and select the employee's name, salary, department, and department manager:
 
 ```sql
 SELECT e.emp_name, e.salary, e.department, d.manager
@@ -39,23 +37,21 @@ JOIN departments d ON e.department = d.department;
 
 
 
-查询结果如下：
+The query results in:
 
 | emp_name | salary | department | manager |
 |----------|--------|------------|---------|
-| 小明     | 5000   | 技术部     | 张三    |
-| 鸡哥     | 6000   | 财务部     | 李四    |
-| 李华     | 4500   | 销售部     | 王五    |
+| John     | 5000   | Technology     | Daniel    |
+| David     | 6000   | Finance     | Alex    |
+| Vanessa     | 4500   | Sales     | Viji    |
 
 
 
-我们会发现，使用 INNER_JOIN 后，只有两个表之间存在对应关系的数据才会被放到查询结果中。
+We can observe that only the data that exists in both tables based on the department is included in the result set after using INNER JOIN.
 
 
+## Question
 
-## 题目
+Suppose we have a student table `student` with the following fields: `id` (student ID), `name` (student name), `age` (student age), `class_id` (class ID). There is also a class table `class` with the following fields: `id` (class ID), `name` (class name), `level` (class level).
 
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`age`（年龄）、`class_id`（班级编号）。还有一个班级表 `class`，包含以下字段：`id`（班级编号）、`name`（班级名称）、`level`（班级级别）。
-
-请你编写一个 SQL 查询，根据学生表和班级表之间的班级编号进行匹配，返回学生姓名（`student_name`）、学生年龄（`student_age`）、班级编号（`class_id`）、班级名称（`class_name`）、班级级别（`class_level`）。
-
+Write an SQL query to match the class ID between the student table and the class table and return the student's name (`student_name`), student's age (`student_age`), class ID (`class_id`), class name (`class_name`), and class level (`class_level`).

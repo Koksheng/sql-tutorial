@@ -1,71 +1,71 @@
-# 基础语法 - 截断和偏移
+# Basic Syntax - Truncation and Offset
 
-## 教程
+## Tutorial
 
-我们先用一个比喻来引出截断和偏移的概念。
+Let's introduce truncation and offset with a metaphor.
 
-假设你有一张待办事项清单，上面有很多任务。当你每次只想查看其中的几个任务时，会怎么办呢？
+Imagine you have a to-do list with many tasks on it. When you only want to view a few tasks at a time, what would you do?
 
-1）你可以使用手指挡住不需要看的部分（即截断）
+1) You can use your finger to cover up the parts you don't want to see (truncation).
 
-2）根据任务的编号，直接翻到需要查看的位置（即偏移）
-
-
-
-在 SQL 中，我们使用 `LIMIT` 关键字来实现数据的截断和偏移。
-
-截断和偏移的一个典型的应用场景是分页，即网站内容很多时，用户可以根据页号每次只看部分数据。
+2) You can directly jump to the desired location based on the task number (offset).
 
 
 
-## 示例
-假设有一张名为 `tasks` 的数据表，它存储了待办事项信息，包括任务名称（task_name）和截止日期（due_date）等。
+In SQL, we use the `LIMIT` keyword to achieve data truncation and offset.
 
-数据表`tasks`：
+A typical application scenario for truncation and offset is pagination, where users can view only part of the data at a time based on page numbers.
+
+
+
+## Example
+Suppose there is a table named `tasks`, which stores to-do list information including task names (`task_name`) and due dates (`due_date`).
+
+Table `tasks`：
 
 |    task_name   | due_date  |
 |----------------|-----------|
-|  完成报告      | 2023-08-05|
-|  预约医生      | 2023-08-08|
-|  购买礼物      | 2023-08-10|
-|  安排旅行      | 2023-08-15|
+|  Complete report | 2023-08-05|
+|  Schedule doctor's appointment | 2023-08-08|
+|  Buy gifts      | 2023-08-10|
+|  Plan a trip    | 2023-08-15|
 
 
 
-现在，我们使用`LIMIT`关键字来进行分页查询：
+Now, let's use the `LIMIT` keyword to perform pagination:
 
 ```sql
--- LIMIT 后只跟一个整数，表示要截断的数据条数（一次获取几条）
+-- LIMIT followed by only one integer, indicating the number of records to be truncated (how many to retrieve at once)
 select task_name, due_date from tasks limit 2;
 
--- LIMIT 后跟 2 个整数，依次表示从第几条数据开始、一次获取几条
+-- LIMIT followed by 2 integers, indicating the starting position and how many records to retrieve at once
 select task_name, due_date from tasks limit 2, 2;
 ```
 
 
 
-查询语句 1 结果，只获取了 2 条数据：
+Query 1 result, retrieves only 2 records:
 
 |   task_name   | due_date  |
 |---------------|-----------|
-|  完成报告      | 2023-08-05|
-|  预约医生      | 2023-08-08|
+|  Complete report | 2023-08-05|
+|  Schedule doctor's appointment | 2023-08-08|
 
 
 
-查询语句 2 结果，从下标为 2（第 3 条）数据的位置开始获取 2 条数据：
+Query 2 result, retrieves 2 records starting from index 2 (the 3rd task):
 
 |   task_name   | due_date  |
 |---------------|-----------|
-|  购买礼物      | 2023-08-10|
-|  安排旅行      | 2023-08-15|
+|  Buy gifts      | 2023-08-10|
+|  Plan a trip    | 2023-08-15|
 
 
 
-通过上述 SQL 查询语句，我们分别选取了待办事项表中的前两个任务和从第三个任务开始的两个任务，实现了数据的截断和偏移。
+Through the above SQL queries, we respectively selected the first two tasks and the following two tasks from the to-do list, achieving data truncation and offset.
 
 
 
-## 题目
+## Exercise
 
-请编写一条 SQL 查询语句，从名为 `student` 的数据表中选择学生姓名（name）和年龄（age），按照年龄从小到大排序，从第 2 条数据开始、截取 3 个学生的信息。
+Please write a SQL query statement to select the student names (`name`) and ages (`age`) from the `student` table, sorted by age in ascending order, retrieving information for 3 students starting from the second data entry.

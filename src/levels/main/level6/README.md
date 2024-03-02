@@ -1,82 +1,82 @@
-# 基础语法 - 条件查询 - 运算符
+# Basic Syntax - Query - Conditional Query - Operators
 
-## 教程
+## Tutorial
 
-运算符是 SQL 中用于在条件查询中进行条件判断的特殊符号，比如 `=`、 `!=`、`<`、`>` 等。通过使用不同的运算符，我们可以在查询语句中设定多样化的条件，从而根据数据的不同属性进行灵活的筛选和过滤。
+Operators are special symbols in SQL used for conditional judgment in conditional queries, such as `=`, `!=`, `<`, `>`, etc. By using different operators, we can set diverse conditions in query statements, thus flexibly filtering and selecting data based on different attributes.
 
-假设你是一名招聘官，而数据表中的数据就像是你面试的候选人。不同的运算符就像是你设定的不同面试条件，例如你可以使用 "!=" 运算符来筛选出不符合某个条件的候选人，使用 ">" 运算符来筛选出成绩优秀的候选人，使用 "BETWEEN" 运算符来筛选出年龄在某个范围内的候选人。
+Suppose you are a recruiter, and the data in the table is like the candidates you are interviewing. Different operators are like the different interview conditions you set. For example, you can use the "!=" operator to filter out candidates who do not meet certain conditions, use the ">" operator to select candidates with excellent performance, and use the "BETWEEN" operator to select candidates within a certain age range.
 
 
 
-## 示例
+## Example
 
-让我们来看一个具体的SQL代码和结果示例，假设有一张名为 `employees` 的数据表，它存储了员工信息，包括员工姓名（name）、年龄（age）、工资（salary）等：
+Let's look at a specific SQL code and result example. Suppose there is a table named `employees`, which stores employee information including employee name (`name`), age (`age`), and salary (`salary`):
 
-数据表 `employees`：
+Table `employees`：
 
 |   name   | age | salary |
 |----------|-----|--------|
-|   小明   |  25 |  5000  |
-|   小红   |  30 |  6000  |
-|   小李   |  28 |  5500  |
-|   小张   |  22 |  4500  |
+|   John   |  25 |  5000  |
+|   Alice  |  30 |  6000  |
+|   Bob    |  28 |  5500  |
+|   Kate   |  22 |  4500  |
 
 
 
-现在，我们使用不同的运算符来进行条件查询：
+Now, let's use different operators for conditional querying:
 
-1）使用 "!=" 运算符筛选出 name 不是 '小张' 的员工：
+1) Using the "!=" operator to filter out employees whose name is not 'Kate':
 
 ```sql
--- SQL查询语句
-select name, age, salary from employees where name != '小张';
+-- SQL query statement
+select name, age, salary from employees where name != 'Kate';
 ```
 
-查询结果：
+Query result:
 
 |   name   | age | salary |
 |----------|-----|--------|
-|   小明   |  25 |  5000  |
-|   小红   |  30 |  6000  |
-|   小李   |  28 |  5500  |
+|   John   |  25 |  5000  |
+|   Alice  |  30 |  6000  |
+|   Bob    |  28 |  5500  |
 
 
 
-2）使用 ">" 运算符筛选出工资高于 5500 的员工：
+2) Using the ">" operator to filter out employees with a salary greater than 5500:
 
 ```sql
--- SQL查询语句
+-- SQL query statement
 select name, age, salary from employees where salary > 5500;
 ```
 
-查询结果：
+Query result:
 
 |   name   | age | salary |
 |----------|-----|--------|
-|   小红   |  30 |  6000  |
+|   Alice  |  30 |  6000  |
 
 
 
-3）使用 "BETWEEN" 运算符筛选出年龄在 25 到 30 之间的员工：
+3) Using the "BETWEEN" operator to filter out employees whose age is between 25 and 30:
 
 ```sql
--- SQL查询语句
+-- SQL query statement
 select name, age, salary from employees where age between 25 and 30;
 ```
 
-查询结果：
+Query result: 
 
 |   name   | age | salary |
 |----------|-----|--------|
-|   小明   |  25 |  5000  |
-|   小红   |  30 |  6000  |
-|   小李   |  28 |  5500  |
+|   John   |  25 |  5000  |
+|   Alice  |  30 |  6000  |
+|   Bob    |  28 |  5500  |
 
-通过上述 SQL 查询语句，我们可以根据不同的运算符进行条件查询，得到了符合不同条件的员工信息。
+Through the above SQL query statements, we can perform conditional queries based on different operators and obtain employee information that meets different conditions.
 
 
 
-## 题目
+## Exercise
 
-请编写一条 SQL 查询语句，从名为 `student` 的数据表中选择出所有学生的姓名（name）和年龄（age），要求学生姓名不等于 '热dog' 。
+Please write a SQL query statement to select the names (name) and ages (age) of all students from the `student` table, where the student name is not equal to 'George'.
 

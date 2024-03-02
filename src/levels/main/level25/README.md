@@ -1,22 +1,22 @@
 
 
-# 查询进阶 - 组合查询
+# Advanced Query - Compound Query
 
-## 教程
-在 SQL 中，组合查询是一种将多个 SELECT 查询结果合并在一起的查询操作。
+## Tutorial
+In SQL, a compound query is an operation that merges the results of multiple SELECT queries.
 
-包括两种常见的组合查询操作：UNION 和 UNION ALL。
+There are two common compound query operations: UNION and UNION ALL.
 
-1. UNION 操作：它用于将两个或多个查询的结果集合并， **并去除重复的行** 。即如果两个查询的结果有相同的行，则只保留一行。
+1. UNION operation: It is used to combine the result sets of two or more queries and **remove duplicate rows**. That is, if two queries have the same row, only one row is retained.
 
-2. UNION ALL 操作：它也用于将两个或多个查询的结果集合并， **但不去除重复的行** 。即如果两个查询的结果有相同的行，则全部保留。
+2. UNION ALL operation: It is also used to combine the result sets of two or more queries, **but it does not remove duplicate rows**. That is, if two queries have the same row, all rows are retained.
 
 
 
-## 示例
-假设我们有以下两个数据表：`table1` 和 `table2`，分别包含不同部门的员工信息。
+## Example
+Suppose we have two tables: `table1` and `table2`, containing employee information from different departments.
 
-table1 表：
+table1 ：
 
 | emp_id | name     | age | department |
 |--------|----------|-----|------------|
@@ -26,7 +26,7 @@ table1 表：
 
 
 
-table2 表：
+table2 ：
 
 | emp_id | name  | age  | department |
 | ------ | ----- | ---- | ---------- |
@@ -37,9 +37,9 @@ table2 表：
 
 
 
-现在，我们想要合并这两张表的数据，分别执行 UNION 操作和 UNION ALL 操作。
+Now, let's merge the data from these two tables, performing UNION and UNION ALL operations separately.
 
-UNION 操作：
+UNION operation:
 
 ```sql
 SELECT name, age, department
@@ -51,7 +51,7 @@ FROM table2;
 
 
 
-UNION 操作的结果，去除了重复的行（名称为 Alice）：
+The result of the UNION operation, removing duplicate rows (name Alice):
 
 | name    | age | department |
 |---------|-----|------------|
@@ -64,10 +64,10 @@ UNION 操作的结果，去除了重复的行（名称为 Alice）：
 
 
 
-UNION ALL 操作：
+UNION ALL operation
 
 ```sql
--- UNION ALL操作
+-- UNION ALL operation
 SELECT name, age, department
 FROM table1
 UNION ALL
@@ -77,7 +77,7 @@ FROM table2;
 
 
 
-结果如下，保留了重复的行：
+The result is as follows, retaining duplicate rows:
 
 | name    | age  | department |
 | ------- | ---- | ---------- |
@@ -91,9 +91,8 @@ FROM table2;
 
 
 
-## 题目
+## Question
 
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`age`（年龄）、`score`（分数）、`class_id`（班级编号）。还有一个新学生表 `student_new`，包含的字段和学生表完全一致。
+Suppose we have a student table `student` with the following fields: `id` (student ID), `name` (student name), `age` (student age), `score` (score), `class_id` (class ID). There is also a new student table `student_new` with the same fields as the student table.
 
-请编写一条 SQL 语句，获取所有学生表和新学生表的学生姓名（`name`）、年龄（`age`）、分数（`score`）、班级编号（`class_id`）字段，要求保留重复的学生记录。
-
+Write an SQL statement to retrieve the student name (`name`), age (`age`), score (`score`), and class ID (`class_id`) fields from both the student table and the new student table, retaining duplicate student records.

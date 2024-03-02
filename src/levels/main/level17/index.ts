@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level17",
-  title: "分组聚合 - 单字段分组",
+  title: "Grouping Aggregates - Single Field Grouping",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
@@ -15,6 +15,6 @@ export default {
     "  student\n" +
     "GROUP BY\n" +
     "  class_id;",
-  hint: "平均成绩可以使用哪个聚合函数呢？",
+  hint: "Which aggregate function can be used for average grade?",
   type: "main",
 } as LevelType;

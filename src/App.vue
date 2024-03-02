@@ -1,11 +1,11 @@
 <template>
   <div id="app">
     <a-row class="header" type="flex" align="middle">
-      <a-col flex="160px" style="margin: 0 auto">
+      <a-col flex="200px" style="margin: 0 auto">
         <RouterLink to="/">
           <a-row align="middle">
             <img src="./assets/logo.png" alt="鱼皮SQL" class="logo" />
-            <span class="title">鱼皮SQL</span>
+            <span class="title">SQL Selt-Study</span>
           </a-row>
         </RouterLink>
       </a-col>
@@ -31,8 +31,8 @@
       <router-view />
     </div>
     <div class="footer">
-      鱼皮SQL - self-study website ©2023 by
-      <a href="https://github.com/liyupi" target="_blank">程序员鱼皮</a>
+      SQL Selt-Study - A self-study website ©2024 maintained by
+      <a href="https://github.com/Koksheng" target="_blank">Gue Kok Sheng</a>
     </div>
     <a-back-top :style="{ right: '24px' }" />
   </div>

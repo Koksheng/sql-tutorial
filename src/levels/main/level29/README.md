@@ -1,27 +1,26 @@
-# 查询进阶 - 开窗函数 - row_number
+# Advanced Query - Window Functions - row_number
 
-## 教程
+## Tutorial
 
 
-Row_Number 开窗函数是 SQL 中的一种用于为查询结果集中的每一行 **分配唯一连续排名** 的开窗函数。
+The Row_Number window function in SQL is used to assign a **unique consecutive ranking** to each row in the query result set.
 
-它与之前讲到的 Rank 函数，Row_Number 函数为每一行都分配一个唯一的整数值，不管是否存在并列（相同排序值）的情况。每一行都有一个唯一的行号，从 1 开始连续递增。
+Unlike the Rank function discussed earlier, the Row_Number function assigns a unique integer value to each row, regardless of whether ties (same sorting values) exist. Each row is assigned a unique row number, starting from 1 and incrementing continuously.
 
-Row_Number 开窗函数的语法如下（几乎和 Rank 函数一模一样）：
+The syntax for the Row_Number window function is almost identical to the Rank function:
 
 ```sql
 ROW_NUMBER() OVER (
-  PARTITION BY column1, column2, ... -- 可选，用于指定分组列
-  ORDER BY column3 [ASC|DESC], column4 [ASC|DESC], ... -- 用于指定排序列及排序方式
+  PARTITION BY column1, column2, ... -- Optional, specifies the grouping columns
+  ORDER BY column3 [ASC|DESC], column4 [ASC|DESC], ... -- Specifies the sorting columns and order
 ) AS row_number_column
 ```
 
-其中，`PARTITION BY`子句可选，用于指定分组列，将结果集按照指定列进行分组。`ORDER BY` 子句用于指定排序列及排序方式，决定了计算 Row_Number 时的排序规则。`AS row_number_column` 用于指定生成的行号列的别名。
+Here, the `PARTITION BY` clause is optional and is used to specify grouping columns to partition the result set. The `ORDER BY` clause is used to specify sorting columns and their order, determining the sorting rules for calculating Row_Number. `AS row_number_column` specifies the alias for the generated row number column.
 
 
-
-## 示例
-假设我们有订单表 `orders`，表格数据如下：
+## Example
+Suppose we have an `orders` table orders with the following data:
 
 | order_id | customer_id | order_date | total_amount |
 |----------|-------------|------------|--------------|
@@ -32,7 +31,7 @@ ROW_NUMBER() OVER (
 
 
 
-现在，我们希望为每个客户的订单按照订单金额降序排列，并且分配一个 row_number 编号，示例 SQL 语句如下：
+Now, let's say we want to rank each customer's orders by total amount in descending order and assign a row number to each order.
 
 ```sql
 SELECT 
@@ -47,7 +46,7 @@ FROM
 
 
 
-结果将是：
+The result will be:
 
 | order_id | customer_id | order_date | total_amount | row_number |
 | -------- | ----------- | ---------- | ------------ | ---------- |
@@ -58,11 +57,10 @@ FROM
 
 
 
-在上面的示例中，我们使用开窗函数 ROW_NUMBER 为每个客户的订单按照订单金额降序排列，并为每个订单分配了一个编号（row_number），并使用 PARTITION BY 子句按照 customer_id 进行分组，并使用 ORDER BY 子句按照 total_amount 进行排序。
+In the above example, we use the Row_Number window function to rank each customer's orders by total amount in descending order and assign a number to each order (row_number). We partition the result set by customer_id and order by total_amount in descending order.
 
 
+## Question
+Suppose we have a student table `student` with the following fields: `id` (student ID), `name` (student name), `age` (student age), `score` (score), `class_id` (class ID).
 
-## 题目
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`age`（年龄）、`score`（分数）、`class_id`（班级编号）。
-
-请你编写一个 SQL 查询，返回每个学生的详细信息（字段顺序和原始表的字段顺序一致），并且按照分数降序的方式给每个班级内的学生分配一个编号（row_number）。
+Write an SQL query to return the detailed information of each student (in the same order as the original table) and assign a number (row_number) to each student within each class in descending order of scores.

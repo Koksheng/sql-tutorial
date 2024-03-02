@@ -1,67 +1,67 @@
-# 基础语法 - 条件查询 - 模糊查询
+# Basic Syntax - Query - Conditional Query - Fuzzy Query
 
-## 教程
+## Tutorial
 
-模糊查询是一种特殊的条件查询，它允许我们根据模式匹配来查找符合特定条件的数据，可以使用 LIKE 关键字实现模糊查询。
+Fuzzy query is a special type of conditional query that allows us to search for data that matches specific patterns. It can be implemented using the LIKE keyword.
 
-在 LIKE 模糊查询中，我们使用通配符来代表零个或多个字符，从而能够快速地找到匹配的数据。
+In LIKE fuzzy queries, we use wildcards to represent zero or multiple characters, allowing us to quickly find matching data.
 
-有如下 2 种通配符：
-- 百分号（%）：表示任意长度的任意字符序列。
-- 下划线（_）：表示任意单个字符。
+There are 2 wildcards available:
+- Percent sign (%) represents any sequence of zero or more characters.
+- Underscore (_) represents any single character.
 
-模糊查询的应用场景：假设你是一名侦探，你需要根据目标人物的一部分线索信息来找到匹配的目标，比如你可以根据目标的名字中包含的关键字或字符来查找。
+Application scenario of fuzzy query: Suppose you are a detective and you need to find the target based on partial clues. For example, you can search for the target based on keywords or characters contained in their name.
 
 
 
-## 示例
+## Example
 
-假设有一张名为`employees`的数据表，它存储了员工信息，包括员工姓名（name）、年龄（age）、职位（position）等：
+Suppose there is a table named `employees`, which stores employee information including employee name (`name`), age (`age`), and position (`position`):
 
-数据表`employees`：
+Table `employees`：
 
 |   name   | age | position       |
 |----------|-----|----------------|
-|   张三   |  25 | 软件工程师     |
-|   李四   |  30 | 数据分析师     |
-|   王五   |  28 | 产品经理       |
-|   小明   |  22 | 软件测试工程师 |
+|   John   |  25 | Software Engineer |
+|   Alice  |  30 | Data Analyst   |
+|   Bob    |  28 | Product Manager|
+|   Kate   |  22 | Software Test Engineer|
 
 
 
-现在，我们使用 LIKE 模糊查询来找出姓名（name）中包含关键字 "张" 的员工信息：
+Now, let's use a LIKE fuzzy query to find employees whose names contain the keyword "John":
 
 ```sql
--- SQL查询语句
-select name, age, position from employees where name like '%张%';
+-- SQL query statement
+select name, age, position from employees where name like '%John%';
 ```
 
 
 
-查询结果：
+Query result:
 
 |   name   | age | position       |
 |----------|-----|----------------|
-|   张三   |  25 | 软件工程师     |
+|   John   |  25 | Software Engineer |
 
 
 
-还可以使用模糊查询匹配开头和结尾：
+We can also use fuzzy queries to match the beginning and end:
 
 ```sql
--- 只查询以 "张" 开头的数据行
-select name, age, position from employees where name like '张%';
+-- Only query rows starting with "John"
+select name, age, position from employees where name like 'John%';
 
--- 只查询以 "张" 结尾的数据行
-select name, age, position from employees where name like '%张';
+-- Only query rows ending with "John"
+select name, age, position from employees where name like '%John';
 ```
 
 
 
-同理，可以使用 `not like` 来查询不包含某关键字的信息。 
+Similarly, we can use `not like` to query information that does not contain certain keywords.
 
 
 
-## 题目
+## Exercise
 
-请编写一条 SQL 查询语句，从名为 `student` 的数据表中选择出所有学生的姓名（name）和成绩（score），要求姓名（name）不包含 "李" 这个字。
+Please write a SQL query statement to select the names (`name`) and scores (`score`) of all students from the `student` table, where the name (`name`) does not contain the letter "ar".

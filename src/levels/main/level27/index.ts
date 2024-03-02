@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level27",
-  title: "查询进阶 - 开窗函数 - sum over order by",
+  title: "Advanced Query - Window Functions - sum over order by",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
@@ -17,6 +17,6 @@ export default {
     "    SUM(score) OVER (PARTITION BY class_id ORDER BY score ASC) AS class_sum_score\n" +
     "FROM\n" +
     "    student;",
-  hint: "请仔细查看本关给出的示例",
+  hint: "Please carefully review the examples provided in this level.",
   type: "main",
 } as LevelType;

@@ -3,11 +3,11 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level10",
-  title: "基础语法 - 去重",
+  title: "Basic Syntax - Query - Distinct",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
   answer: "select distinct class_id, exam_num from student;",
-  hint: "需要使用多字段去重",
+  hint: "Please carefully review the examples provided in this level.",
   type: "main",
 } as LevelType;

@@ -1,24 +1,23 @@
-# 查询进阶 - 开窗函数 - sum over order by
+# Advanced Query - Window Functions - sum over order by
 
-## 教程
-之前的教程中，我们讲到了 sum over 开窗函数，并且用它实现了分组统计。
+## Tutorial
+In the previous tutorial, we learned about the sum over window function and how it can be used for group statistics.
 
-本节教程我们将学习 sum over 函数的另一种用法：sum over order by，可以实现同组内数据的 **累加求和** 。
+In this section, we'll explore another usage of the sum over function: sum over order by, which allows us to perform **cumulative sum** within groups.
 
-示例用法如下：
+The syntax for this usage is:
 
 ```sql
-SUM(计算字段名) OVER (PARTITION BY 分组字段名 ORDER BY 排序字段 排序规则)
+SUM(column_name) OVER (PARTITION BY group_column_name ORDER BY order_column ASC/DESC)
 ```
 
 
 
-举一个应用场景：老师在每个班级里依次点名，每点到一个学生，老师都会记录当前已点到的学生们的分数总和。
+Here's an example scenario: A teacher takes attendance in each class one by one. As each student is called, the teacher keeps a running total of the scores of the students already called.
 
 
-
-## 示例
-假设我们有订单表 `orders`，表格数据如下：
+## Example
+Suppose we have an orders table `orders` with the following data:
 
 | order_id | customer_id | order_date | total_amount |
 |----------|-------------|------------|--------------|
@@ -29,7 +28,7 @@ SUM(计算字段名) OVER (PARTITION BY 分组字段名 ORDER BY 排序字段 �
 
 
 
-现在，我们希望计算每个客户的历史订单累计金额，并显示每个订单的详细信息。
+Now, let's say we want to calculate the cumulative total amount of each customer's orders and display the details of each order.
 
 ```sql
 SELECT 
@@ -44,7 +43,7 @@ FROM
 
 
 
-结果将是：
+The result will be:
 
 | order_id | customer_id | order_date  | total_amount | cumulative_total_amount |
 |----------|-------------|-------------|--------------|-------------------------|
@@ -55,12 +54,10 @@ FROM
 
 
 
-在上面的示例中，我们使用开窗函数 SUM 来计算每个客户的历史订单累计金额（cumulative_total_amount），并使用 PARTITION BY 子句按照 customer_id 进行分组，并使用 ORDER BY 子句按照 order_date 进行排序。从结果的前两行可以看到，开窗函数保留了原始订单的详细信息，同时计算了每个客户的历史订单累计金额；相比于只用 sum over，同组内的累加列名称
+In the above example, we use the SUM window function to calculate the cumulative total amount of each customer's orders (cumulative_total_amount), partitioned by customer_id, and ordered by order_date in ascending order. As you can see from the first two rows of the result, the window function retains the details of the original orders while calculating the cumulative total amount for each customer.
 
 
+## Question
+Suppose we have a student table `student` with the following fields: `id` (student ID), `name` (student name), `age` (student age), `score` (score), `class_id` (class ID).
 
-## 题目
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`age`（年龄）、`score`（分数）、`class_id`（班级编号）。
-
-请你编写一个 SQL 查询，返回每个学生的详细信息（字段顺序和原始表的字段顺序一致），并且按照分数升序的方式累加计算每个班级的学生总分（class_sum_score）。
-
+Write an SQL query to return the detailed information of each student (in the same order as the original table) and calculate the cumulative sum of scores for each class in ascending order of scores (class_sum_score).

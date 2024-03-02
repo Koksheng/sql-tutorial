@@ -3,7 +3,7 @@ import sql from "./createTable.sql?raw";
 
 export default {
   key: "level19",
-  title: "分组聚合 - having 子句",
+  title: "Grouping Aggregates - HAVING Clause",
   initSQL: sql,
   content: md,
   defaultSQL: "select * from student",
@@ -17,6 +17,6 @@ export default {
     "  class_id\n" +
     "HAVING\n" +
     "  SUM(score) > 150;",
-  hint: "请仔细查看本关给出的示例",
+  hint: "Please carefully review the examples provided in this level.",
   type: "main",
 } as LevelType;

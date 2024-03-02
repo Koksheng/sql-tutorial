@@ -1,20 +1,20 @@
-# 函数 - 聚合函数
+# Function - Aggregate Functions
 
-## 教程
-在 SQL 中，聚合函数是一类用于对数据集进行 **汇总计算** 的特殊函数。它们可以对一组数据执行诸如计数、求和、平均值、最大值和最小值等操作。聚合函数通常在 SELECT 语句中配合 GROUP BY 子句使用，用于对分组后的数据进行汇总分析。
+## Tutorial
 
-常见的聚合函数包括：
+In SQL, aggregate functions are a special type of functions used to perform **summary calculations** on a dataset. They allow us to perform operations such as counting, summing, averaging, finding the maximum, and finding the minimum of a set of data. Aggregate functions are often used in conjunction with the GROUP BY clause in SELECT statements to summarize and analyze grouped data.
 
-- COUNT：计算指定列的行数或非空值的数量。
-- SUM：计算指定列的数值之和。
-- AVG：计算指定列的数值平均值。
-- MAX：找出指定列的最大值。
-- MIN：找出指定列的最小值。
+Commonly used aggregate functions include:
+
+- COUNT: Count the number of rows or non-null values in a specified column.
+- SUM: Calculate the sum of values in a specified column.
+- AVG: Calculate the average value of values in a specified column.
+- MAX: Find the maximum value in a specified column.
+- MIN: Find the minimum value in a specified column.
 
 
-
-## 示例
-假设有一个订单表 `orders`，包含以下字段：`order_id`（订单号）、`customer_id`（客户编号）、`amount`（订单金额）。数据如下：
+## Example
+Suppose there is an orders table `orders`, containing the following fields: `order_id` (order ID), `customer_id` (customer ID), `amount` (order amount). The data is as follows:
 
 | order_id | customer_id | amount |
 |---------|-------------|--------|
@@ -25,14 +25,14 @@
 
 
 
-1）使用聚合函数 `COUNT` 计算订单表中的总订单数：
+1）Using the aggregate function `COUNT` to calculate the total number of orders in the orders table:
 
 ```sql
 SELECT COUNT(*) AS order_num
 FROM orders;
 ```
 
-查询结果：
+Query result:
 
 | order_num |
 | --------- |
@@ -40,14 +40,14 @@ FROM orders;
 
 
 
-2）使用聚合函数 `COUNT(DISTINCT 列名)` 计算订单表中不同客户的数量：
+2）Using the aggregate function `COUNT(DISTINCT column_name)` to calculate the number of distinct customers in the orders table:
 
 ```sql
 SELECT COUNT(DISTINCT customer_id) AS customer_num
 FROM orders;
 ```
 
-查询结果：
+Query result: 
 
 | customer_num |
 | ------------ |
@@ -55,14 +55,14 @@ FROM orders;
 
 
 
-3）使用聚合函数 `SUM` 计算总订单金额：
+3）Using the aggregate function `SUM` to calculate the total order amount:
 
 ```sql
 SELECT SUM(amount) AS total_amount
 FROM orders;
 ```
 
-查询结果：
+Query result:
 
 | total_amount |
 | ------------ |
@@ -70,6 +70,6 @@ FROM orders;
 
 
 
-## 题目
+## Question
 
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`class_id`（班级编号）、`score`（成绩）。请你编写一个 SQL 查询，汇总学生表中所有学生的总成绩（total_score）、平均成绩（avg_score）、最高成绩（max_score）和最低成绩（min_score）。
+Suppose there is a student table `student`, containing the following fields: `id` (student ID), `name` (name), `class_id` (class ID), `score` (score). Write an SQL query to summarize the total score (`total_score`), average score (`avg_score`), maximum score (`max_score`), and minimum score (`min_score`) of all students in the student table.

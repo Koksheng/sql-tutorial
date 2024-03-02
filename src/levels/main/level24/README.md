@@ -1,16 +1,16 @@
-# 查询进阶 - 子查询 - exists
+# Advanced Query - Subquery - Exists
 
-## 教程
-之前的教程讲到，子查询是一种强大的查询工具，它可以嵌套在主查询中，帮助我们进行更复杂的条件过滤和数据检索。
+## Tutorial
+In the previous tutorial, we learned that a subquery is a powerful tool for querying, allowing us to nest one query within another to perform more complex conditional filtering and data retrieval.
 
-其中，子查询中的一种特殊类型是 "exists" 子查询，用于检查主查询的结果集是否存在满足条件的记录，它返回布尔值（True 或 False），而不返回实际的数据。
+One special type of subquery is the "exists" subquery, used to check whether there are records that satisfy certain conditions in the result set of the main query. It returns a boolean value (True or False) rather than actual data.
 
 
 
-## 示例
-假设我们有以下两个数据表：`orders` 和 `customers`，分别包含订单信息和客户信息。
+## Example
+Suppose we have two tables: `orders` and `customers`, containing order and customer information, respectively.
 
-orders 表：
+Orders table:
 
 | order_id | customer_id | order_date | total_amount |
 |----------|-------------|------------|--------------|
@@ -21,27 +21,27 @@ orders 表：
 
 
 
-customers 表：
+Customers table:
 
 | customer_id | name    | city        |
 | ----------- | ------- | ----------- |
 | 101         | Alice   | New York    |
 | 102         | Bob     | Los Angeles |
 | 103         | Charlie | Chicago     |
-| 104         | 赵二    | China       |
+| 104         | Darren  | China       |
 
 
 
-现在，我们希望查询出 **存在订单的** 客户姓名和订单金额。
+Now, suppose we want to query the names and order amounts of customers who have **placed orders**.
 
-使用 exists 子查询的方式，SQL 代码如下：
+Using the exists subquery, the SQL code is as follows:
 
 ```sql
--- 主查询
+-- Outer Query
 SELECT name, total_amount
 FROM customers
 WHERE EXISTS (
-    -- 子查询
+    -- Subquery
     SELECT 1
     FROM orders
     WHERE orders.customer_id = customers.customer_id
@@ -50,9 +50,9 @@ WHERE EXISTS (
 
 
 
-上述语句中，先遍历客户信息表的每一行，获取到客户编号；然后执行子查询，从订单表中查找该客户编号是否存在，如果存在则返回结果。
+In the above statement, we first iterate over each row of the customer information table to get the customer ID. Then, we execute the subquery to check whether this customer ID exists in the orders table. If it exists, we return the result.
 
-查询结果如下：
+The result of the query is as follows:
 
 | name   | total_amount |
 |--------|--------------|
@@ -62,13 +62,11 @@ WHERE EXISTS (
 
 
 
-和 exists 相对的是 not exists，用于查找不满足存在条件的记录。
+The opposite of exists is not exists, which is used to find records that do not meet the existence condition.
 
 
+## Question
 
-## 题目
+Suppose we have a student table `student` with the following fields: `id` (student ID), `name` (student name), `age` (student age), `score` (score), `class_id` (class ID). There is also a class table `class` with the following fields: `id` (class ID), `name` (class name).
 
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`age`（年龄）、`score`（分数）、`class_id`（班级编号）。还有一个班级表 `class`，包含以下字段：`id`（班级编号）、`name`（班级名称）。
-
-请你编写一个 SQL 查询，使用 exists 子查询的方式来获取 **不存在对应班级的** 学生的所有数据，返回学生姓名（`name`）、年龄（`age`）、班级编号（`class_id`）字段。
-
+Write an SQL query to retrieve all data of students who **do not belong to any corresponding classes** using exists subquery. Return the fields: student name (`name`), age (`age`), and class ID (`class_id`).

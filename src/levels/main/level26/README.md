@@ -1,24 +1,24 @@
-# 查询进阶 - 开窗函数 - sum over
+# Advanced Query - Window Functions - sum over
 
-## 教程
-在 SQL 中，开窗函数是一种强大的查询工具，它允许我们在查询中进行对分组数据进行计算、 **同时保留原始行的详细信息** 。
+## Tutorial
+In SQL, window functions are powerful tools for querying data. They allow us to perform calculations on grouped data while **retaining detailed information about the original rows**.
 
-开窗函数可以与聚合函数（如 SUM、AVG、COUNT 等）结合使用，但与普通聚合函数不同，开窗函数不会导致结果集的行数减少。
+Window functions can be combined with aggregate functions (such as SUM, AVG, COUNT, etc.), but unlike regular aggregate functions, window functions do not reduce the number of rows in the result set.
 
-打个比方，可以将开窗函数想象成一种 "透视镜"，它能够将我们聚焦在某个特定的分组，同时还能看到整体的全景。
+Think of window functions as a "magnifying glass" that allows us to focus on a specific group while still seeing the overall picture.
 
-本节我们先讲第一个开窗函数：sum over。
+In this section, we'll discuss the first window function: sum over.
 
-该函数用法为：
+The syntax of this function is:
 
 ```sql
-SUM(计算字段名) OVER (PARTITION BY 分组字段名)
+SUM(column_name) OVER (PARTITION BY group_column_name)
 ```
 
 
 
-## 示例
-假设我们有订单表 `orders`，表格数据如下：
+## Example
+Suppose we have an orders table `orders` with the following data:
 
 | order_id | customer_id | order_date | total_amount |
 |----------|-------------|------------|--------------|
@@ -29,9 +29,9 @@ SUM(计算字段名) OVER (PARTITION BY 分组字段名)
 
 
 
-现在，我们希望计算每个客户的订单总金额，并显示每个订单的详细信息。
+Now, let's say we want to calculate the total amount of each customer's orders and display the details of each order.
 
-示例 SQL 如下：
+The SQL query would look like this:
 
 ```sql
 SELECT 
@@ -46,7 +46,7 @@ FROM
 
 
 
-查询结果：
+The result of the query would be:
 
 | order_id | customer_id | order_date  | total_amount | customer_total_amount |
 |----------|-------------|-------------|--------------|-----------------------|
@@ -57,11 +57,10 @@ FROM
 
 
 
-在上面的示例中，我们使用开窗函数 SUM 来计算每个客户的订单总金额（customer_total_amount），并使用 PARTITION BY 子句按照customer_id 进行分组。从前两行可以看到，开窗函数保留了原始订单的详细信息，同时计算了每个客户的订单总金额。
+In the above example, we use the window function SUM to calculate the total amount of each customer's orders (customer_total_amount) and partition the data by customer_id. As you can see from the first two rows, the window function retains the details of the original orders while calculating the total amount for each customer.
 
 
+## Question
+Suppose we have a student table `student` with the following fields: `id` (student ID), `name` (student name), `age` (student age), `score` (score), `class_id` (class ID).
 
-## 题目
-假设有一个学生表 `student`，包含以下字段：`id`（学号）、`name`（姓名）、`age`（年龄）、`score`（分数）、`class_id`（班级编号）。
-
-请你编写一个 SQL 查询，返回每个学生的详细信息（字段顺序和原始表的字段顺序一致），并计算每个班级的学生平均分（class_avg_score）。
+Write an SQL query to return the detailed information of each student (in the same order as the original table) and calculate the average score of each class (class_avg_score).

@@ -24,7 +24,7 @@ Table `employees`：
 |   Bob    | 32  | Product Designer|
 |   Kate   | 26  | Marketing Specialist|
 
-Now, let's use "alias" to get the names (name) and positions (position) of all team members, and alias them as `Employee Name` and `Position Name`:
+Now, let's use "alias" to get the names (`name`) and positions (`position`) of all team members, and alias them as `Employee Name` and `Position Name`:
 
 ```sql
 -- SQL query statement
